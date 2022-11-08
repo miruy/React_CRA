@@ -1,34 +1,12 @@
-import { useEffect, useState,   } from "react";
-
-function Hello(){
-
-  // 주석코드와 비주석코드는 같은 의미
-  // useEffect(() => {
-  //   console.log("생성 :)");
-  //   return () => console.log("삭제 :(");
-  // }, []);
-
-  function create(){
-    console.log("create:)");
-    return destroy;
-  }
-
-  function destroy(){
-    console.log("destroy:(");
-  }
-
-  useEffect(create, []);
-  return <h1>Hello~</h1>;
-}
+import { useState  } from "react";
 
 function App() {
-  const [show, setShow] = useState(false);
-  const onClick = () => setShow(prev => !prev);
-
+  const [toDo, setToDo] = useState("");
+  const onChange = (event) => setToDo(event.target.value);
+  console.log(toDo);
   return (
     <div>
-    {show ? <Hello /> : null}  
-    <button onClick={onClick}>{show ? "Hide" : "Show"}</button>
+      <input value={toDo} onChange={onChange} type="text" placeholder="해야 할 일을 작성하세요"></input>
     </div>
   );
 } 
